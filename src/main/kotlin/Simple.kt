@@ -1,17 +1,14 @@
-package simple
-
 import dagger.Component
 import dagger.Module
 import dagger.Provides
-import java.util.*
 
 @Module
 class SimpleModule {
-
     @Provides
-    fun aFloat() = 3f
-
+    fun aFloat() = 3.14f
 }
 
 @Component(modules = [SimpleModule::class])
-interface SimpleComponent
+interface SimpleComponent {
+    val aFloat: Float
+}
