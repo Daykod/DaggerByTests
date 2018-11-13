@@ -1,10 +1,14 @@
+import bindsinstance.DaggerBindingComponent
+import bindsinstance.Data
 import org.junit.Test
+import kotlin.test.assertSame
 
 class BindsInstanceTest {
 
     @Test
     fun test() {
-        val component = DaggerBindingComponent.builder().bindAString("Hello! I am bound!").build()
-        println(component.aString)
+        val data = Data()
+        val component = DaggerBindingComponent.builder().bindData(data).build()
+        assertSame(data, component.data)
     }
 }

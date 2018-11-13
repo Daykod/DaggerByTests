@@ -1,4 +1,7 @@
 import org.junit.Test
+import singletonscope.DaggerSingletonComponent
+import kotlin.test.assertEquals
+import kotlin.test.assertNotEquals
 
 class ScopesTest {
 
@@ -12,7 +15,7 @@ class ScopesTest {
         val oneFloat = component.aRandFloat
         val twoFloat = component.aRandFloat
 
-        println("First int: $oneInt, Second int: $twoInt")
-        println("First float: $oneFloat, Second float: $twoFloat")
+        assertEquals(oneInt, twoInt, "Scoped bindings are reused")
+        assertNotEquals(oneFloat, twoFloat, "Non scoped bindings are not reused")
     }
 }

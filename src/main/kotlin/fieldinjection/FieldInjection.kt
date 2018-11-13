@@ -1,21 +1,25 @@
+package fieldinjection
+
 import dagger.Component
 import dagger.Module
 import dagger.Provides
+import simple.SimpleModule
 import javax.inject.Inject
+
+class Data @Inject constructor()
+
+class Dependency @Inject constructor(val data: Data)
 
 @Module
 class FieldInjectionModule {
     @Provides
-    fun aFloat() = 3.14f
+    fun data() = Data()
 }
 
 @Component(modules = [SimpleModule::class])
 interface FieldInjectionComponent {
     fun inject(injectee: Injectee)
-}
-
-class Dependency @Inject constructor() {
-    val anInt: Int = 1
+    fun data(): Data
 }
 
 class Injectee {
