@@ -1,4 +1,6 @@
 import org.junit.Test
+import subcomponent.DaggerParentComponent
+import kotlin.test.assertNotSame
 
 class SubcomponentTests {
 
@@ -8,11 +10,15 @@ class SubcomponentTests {
 
         val childComponent = parentComponent.child().build()
 
-        println("Parent 1st int : ${parentComponent.anInt}")
-        println("Parent 2nd int : ${parentComponent.anInt}")
+        val firstparentint = parentComponent.anInt
+        val secondparentint = parentComponent.anInt
+        assertNotSame(firstparentint, secondparentint, "Bindings are still separate instances")
 
-        println("Child 1st int: ${childComponent.anInt}")
-        println("Child 2nd int: ${childComponent.anInt}")
-        println("Child has a boolean too, ${childComponent.aBoolean}")
+        val childInt1 = childComponent.anInt
+        val childInt2 = childComponent.anInt
+        assertNotSame(childInt1, childInt2, "Still separate")
+        assertNotSame(childInt1, firstparentint, "but also separate from parent")
+        assert(childComponent.aBoolean)
+        //And the subcomponent is a superset of the parent's graph
     }
 }

@@ -1,3 +1,5 @@
+package constructorinjection
+
 import dagger.Component
 import javax.inject.Inject
 

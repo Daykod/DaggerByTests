@@ -1,3 +1,5 @@
+package subcomponent
+
 import dagger.Component
 import dagger.Module
 import dagger.Provides

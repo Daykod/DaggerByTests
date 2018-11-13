@@ -1,11 +1,13 @@
+import constructorinjection.DaggerConstructorInjectionComponent
 import org.junit.Test
+import kotlin.test.assertEquals
 
 class ConstructorInjectionTest {
 
     @Test
     fun test() {
         val component = DaggerConstructorInjectionComponent.create()
-        println(component.dependency.anInt)
+        assertEquals(component.dependency.anInt, 4)
     }
 
 }

@@ -1,14 +1,19 @@
+package simple
+
 import dagger.Component
 import dagger.Module
 import dagger.Provides
 
+
+class Data
+
 @Module
 class SimpleModule {
     @Provides
-    fun aFloat() = 3.14f
+    fun data() = Data()
 }
 
 @Component(modules = [SimpleModule::class])
 interface SimpleComponent {
-    val aFloat: Float
+    val data: Data
 }

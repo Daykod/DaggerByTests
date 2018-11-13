@@ -1,3 +1,5 @@
+package providesbinds
+
 import dagger.Binds
 import dagger.Component
 import dagger.Module

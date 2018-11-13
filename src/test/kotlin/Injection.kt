@@ -1,4 +1,7 @@
+import fieldinjection.DaggerFieldInjectionComponent
+import fieldinjection.Injectee
 import org.junit.Test
+import kotlin.test.assertNotSame
 
 class InjectionTest {
 
@@ -11,6 +14,9 @@ class InjectionTest {
 
         component.inject(injectee)
 
-        println(injectee.dependency.anInt)
+        val data = component.data()
+        val injectedData = injectee.dependency.data
+
+        assertNotSame(data, injectedData, "These bindings are called for each request")
     }
 }
